@@ -14,7 +14,7 @@ dependencies {
 repositories {
 //  mavenCentral()
     maven {
-        url "http://ec2-13-124-17-220.ap-northeast-2.compute.amazonaws.com:8081/repository/05074-test/"
+        url "http://<Nexus Private IP>:8081/repository/<nexus artifact repository Name>"
         allowInsecureProtocol true
     }
 
@@ -43,8 +43,8 @@ jib {
         image = 'adoptopenjdk/openjdk11:alpine-jre'
     }
     to {
-        image = '458461641894.dkr.ecr.ap-northeast-2.amazonaws.com/test'
-        tags = ['1.0']
+        image = '<AWS ECR URL>/<Image Repository Name>'
+        tags = ['<Image Tag Name>']
     }
     container {
         entrypoint = ['java', '-Dspring.profiles.active=test', '-jar', 'test-docker-spring-boot-0.0.1-SNAPSHOT.jar']
